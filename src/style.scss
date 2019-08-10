@@ -1,0 +1,185 @@
+:root {
+ --color-primary: #444;
+ --color-primary-dark: #444;
+ --color-primary-light: #444;
+ --color-secondary: #444;
+ --color-secondary-dark: #444;
+ --color-secondary-light: #444;
+ --color-tertiary: #444;
+ --color-tertiary-dark: #444;
+ --color-tertiary-light: #444;
+ --color-accent: #444;
+ --color-accent-dark: #444;
+ --color-accent-light: #444;
+ --font-family-link: 'Sniglet', Palatino, serif;
+ --font-family-label: 'Comfortaa', Arial, sans;
+ --font-family-content: 'Source Sans Pro', Arial, sans;
+ --background-header: url(images/texture-pavement.png); /*Image source: https://hendriklammers.com*/
+ --background-main: url(images/texture-paper.png); /*Image source: https://emailcoder.net*/
+}
+
+html, body, h1, h2, h3, h4, h5, p, ol, ul, li, a, image, iframe, form, label, input, textarea, button, table, tr, td, div {
+	padding: 0;
+	border: 0;
+	margin: 0;
+	font: inherit;
+	text-decoration: none;
+	color: #434343;
+	outline: none;
+}
+
+body {
+  font-size: 20px;
+
+  .sticky {
+	  position: sticky;
+  }
+
+  header {
+    background-color: #fff;
+    padding: 28px 0 8px 0;
+    text-align: center;
+    position: relative;
+    margin: 0 30px;
+    box-shadow: 0 20px 15px -25px #bbb;
+    margin-bottom: 9px;
+
+    .title a {
+      color: red;
+      font-family: Righteous, cursive;
+      font-size: 24px;
+      
+      #xpt {
+        font-family: sans;
+      }
+    }
+  }
+
+  nav.sticky {
+    top: 0;
+    z-index: 1;
+    background-color: #FFF;
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+  
+    #select {
+      font-size: 18px;
+      padding: 5px 50px;
+      display: inline;
+      text-align: center;
+      
+      #author-select {
+        font-size: 16px;
+      }
+    }
+  }
+
+  main {
+    margin-top: 10px;
+    padding: 42px 30px;
+    background: linear-gradient(90deg, white, #EEE, #DDD, #EEE, white);
+    background-position: center; 
+
+    section {
+      padding: 10%;
+      background-color: #333;
+      position: relative;
+      z-index: 0;
+      border: 6px solid #BB9955;
+      border-bottom: 15px solid tan;
+
+      #text {
+        font-size: 18px;
+      }
+
+      #author {
+        font-size: 16px;
+      }
+
+      a {
+        margin-top: 60px;
+        
+        span {
+          font-family: sans;
+        }
+      }
+
+      p {
+        font-family: 'Special Elite', cursive;
+        font-weight: bold;
+        color: #EEE;
+        text-align: center;
+      }
+    }
+
+    #base {
+      height:6px;
+      background-color: #BB9955;
+    }
+  }
+}
+  
+@media only screen and (min-width: 640px) {
+
+  body {
+    nav.sticky {
+      #select {
+        padding: 5px 5px;
+      }
+    }
+
+    main {
+      padding: 42px 10%;
+
+      .intro {
+        height: 60vmin;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+
+  body {
+		padding: 0 10%;
+
+    nav.sticky ul {
+      padding: 10px 10px;
+      font-size: 20px;
+    
+      #select {
+        padding: 10px 10px;
+        font-family: Arial, sans;
+        
+        #select-label {
+          font-family: Righteous, cursive;
+        }
+        #author-select {
+          font-size: 18px;
+        }
+      }
+
+      a {
+        padding: 10px 10px;
+      }
+    }
+      
+    main .intro {
+      height: 45vmin;
+    }
+  }
+}
+
+@media only screen and (min-width: 1360px) {
+
+	nav.sticky {
+		padding: 15px 15px;
+    
+    #select {
+      font-size: 22px;
+		  padding: 15px 15px;
+	  }
+  }
+}
+
