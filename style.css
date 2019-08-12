@@ -1,25 +1,3 @@
-:root {
-  --color-primary: #444;
-  --color-primary-dark: #444;
-  --color-primary-light: #444;
-  --color-secondary: #444;
-  --color-secondary-dark: #444;
-  --color-secondary-light: #444;
-  --color-tertiary: #444;
-  --color-tertiary-dark: #444;
-  --color-tertiary-light: #444;
-  --color-accent: #444;
-  --color-accent-dark: #444;
-  --color-accent-light: #444;
-  --font-family-link: 'Sniglet', Palatino, serif;
-  --font-family-label: 'Comfortaa', Arial, sans;
-  --font-family-content: 'Source Sans Pro', Arial, sans;
-  --background-header: url(images/texture-pavement.png);
-  /*Image source: https://hendriklammers.com*/
-  --background-main: url(images/texture-paper.png);
-  /*Image source: https://emailcoder.net*/
-}
-
 html, body, h1, h2, h3, h4, h5, p, ol, ul, li, a, image, iframe, form, label, input, textarea, button, table, tr, td, div {
   padding: 0;
   border: 0;
