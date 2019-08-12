@@ -3,9 +3,6 @@ This page uses code from the codepen at
 https://codepen.io/freeCodeCamp/pen/qRZeGZ
 attributed to Gabriel Nunes with modification by Todd Chaffee to use Camper gist for JSON Quote data.
 */
-
-const projectName = "random-quote-machine";
-localStorage.setItem('example_project', 'Randowm Quote Machine');
 let quotesData;
 
 function inIframe() {try {return window.self !== window.top;} catch (e) {return true;}}
