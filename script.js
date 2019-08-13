@@ -37,8 +37,7 @@ function sanitizeQuoteData(data) {
       newData.push({ author: author, quote: [quote] });
     } else {
       let i = newData.findIndex(a => nocaseAuthor.test(a.author));
-      let quotes = newData[i].quote;
-      newData[i].quote.push(quotes);
+      newData[i].quote.push(quote);
     }
   });
   newData.sort((a, b) => a.author.localeCompare(b.author));
@@ -60,27 +59,25 @@ function loadAuthorMenu() {
   $('#author-select').html(options);
 }
 
-function loadQuoteDisplay(quoteData) {
-  currentQuote = quoteData.quote;
-  currentAuthor = quoteData.author;
+function loadQuoteDisplay(data) {
+  console.log(data.quote);
+  let currentQuote = data.quote[
+  Math.floor(Math.random() * data.quote.length)];
+
+  console.log(currentQuote);
+  let currentAuthor = data.author;
 
   if (inIframe())
   {
     $('#tweet-quote').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + currentQuote + '" ' + currentAuthor));
   }
 
-  $('#text').text(quoteData.quote);
-  $('#author').html(quoteData.author);
+  $('#text').text(currentQuote);
+  $('#author').html(currentAuthor);
 }
 
 function getRandomQuote() {
   return quotesData[Math.floor(Math.random() * quotesData.length)];
-}
-
-function getAuthorQuote(author) {
-  let authorQuotes = quotesData.filter((value, index, array) => author == value.author);
-  let authorQuote = authorQuotes[Math.floor(Math.random() * authorQuotes.length)];
-  return authorQuote;
 }
 
 $(document).ready(function () {
@@ -91,11 +88,10 @@ $(document).ready(function () {
 
   $('#author-select').on('change', () => {
     let val = $('#author-select option:selected').val();
-    let id = parseInt(val.match(/\d+/g));
-    let author = quotesData[id].author;
-    loadQuoteDisplay(
-    getAuthorQuote(author));
-
+    let index = parseInt(val.match(/\d+/g));
+    let data = quotesData[index];
+    console.log(data);
+    loadQuoteDisplay(data);
   });
 
   $('#new-quote').on('click', () => {
