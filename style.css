@@ -11,9 +11,6 @@ html, body, h1, h2, h3, h4, h5, p, ol, ul, li, a, image, iframe, form, label, in
 body {
   font-size: 20px;
 }
-body .sticky {
-  position: sticky;
-}
 body header {
   background-color: #fff;
   padding: 28px 0 8px 0;
@@ -25,28 +22,24 @@ body header {
 }
 body header .title a {
   color: red;
-  font-family: Righteous, cursive;
+  font-family: "Fredericka the Great", cursive;
   font-size: 24px;
 }
-body header .title a #xpt {
-  font-family: sans;
-}
-body nav.sticky {
+body nav {
   top: 0;
-  z-index: 1;
-  background-color: #FFF;
-  text-align: center;
-  position: relative;
-  margin-top: 30px;
 }
-body nav.sticky #select {
+body nav #select {
   font-size: 18px;
   padding: 5px 50px;
-  display: inline;
   text-align: center;
+  font-family: 'Fredericka the Great', cursive;
 }
-body nav.sticky #select #author-select {
-  font-size: 16px;
+body nav #select #author-select {
+  font-size: 16px !important;
+  background-color: #fff;
+}
+body nav #select #author-select option {
+  font-weight: bold;
 }
 body main {
   margin-top: 10px;
@@ -86,46 +79,29 @@ body main #base {
 }
 
 @media only screen and (min-width: 640px) {
-  body nav.sticky #select {
+  body nav #select {
     padding: 5px 5px;
   }
   body main {
     padding: 42px 10%;
-  }
-  body main .intro {
-    height: 60vmin;
   }
 }
 @media only screen and (min-width: 1000px) {
   body {
     padding: 0 10%;
   }
-  body nav.sticky ul {
+  body nav #select {
     padding: 10px 10px;
-    font-size: 20px;
   }
-  body nav.sticky ul #select {
-    padding: 10px 10px;
-    font-family: Arial, sans;
-  }
-  body nav.sticky ul #select #select-label {
-    font-family: Righteous, cursive;
-  }
-  body nav.sticky ul #select #author-select {
+  body nav #select #author-select {
     font-size: 18px;
-  }
-  body nav.sticky ul a {
-    padding: 10px 10px;
-  }
-  body main .intro {
-    height: 45vmin;
   }
 }
 @media only screen and (min-width: 1360px) {
-  nav.sticky {
+  nav {
     padding: 15px 15px;
   }
-  nav.sticky #select {
+  nav #select {
     font-size: 22px;
     padding: 15px 15px;
   }
