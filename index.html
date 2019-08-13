@@ -3,53 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Random Quotables</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.min.css'>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Special+Elite&display=swap" rel="stylesheet">
-  
-    <meta charset="UTF-8">
-    <link href="main.css" rel="stylesheet">
+  <head>
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great|Special+Elite&display=swap');
+</style>
     <title>Random Quotables</title>
   </head>
-    <body>
-        <a class="target" id="scroll"></a>
-        <header>
-            <h1 class="title">
-				<a target=_blank href="https://codepen.io/rjbx/full/BXxbbb">"Random Quotables"</a>
-			</h1>
-        <nav>
-          <div id="select">
-            <span id="select-label">What, say&nbsp;</span> 
-            <select id="author-select">
-            </select>
-          </div>
-        </nav>
-      </header>
-        <main>
-            <section id="quote-box">
-                <a class="target"><h3></h3></a>
-              <p id="text">Some text Some text Some text Some text</p>
-              <br>
-              <p id="author">-Test</p>
-              <a class="btn btn-block btn-primary glyphicon glyphicon-refresh" id="new-quote"><span> Generate</span></a>
-              <a target=_blank class="btn btn-block btn-info fab fa-twitter" id="tweet-quote"><span> Share</span></a>
-            </section>
-          <div id="base"></div>
-        </main>
-        <footer>
-            <p></p>
-            <p></p>
-        </footer>
-    </body>
+  <body>
+    <header>
+      <h1 class="title">
+	<a href="https://codepen.io/rjbx/full/BXxbbb">"Random Quotables"</a>
+      </h1>
+      <nav>
+        <div id="select">
+          <span id="select-label">What, say&nbsp;   </span> 
+          <select id="author-select">
+          </select>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section id="quote-box">
+        <h2>&nbsp;</h2>
+        <div id="text-container">
+          <p id="text"></p>
+        <br>
+          <p id="author"></p>
+        </div>
+        <div class="text-center" id="button-container">
+          <a class="text-white btn btn-danger fas fa-redo" id="new-quote"><span> Generate</span></a>
+          <a target=_blank class="btn btn-secondary fab fa-twitter" id="tweet-quote" ><span> Share</span></a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <h6 class="text-muted text-center"><small>Made by <a target=_blank href="https://github.com/rjbx">rjbx</a> with <a target=_blank href="https://getbootstrap.com">Bootstrap</a>, <a target=_blank href="https://sass-lang.com">Sass</a> and <a target=_blank href="https://jquery.com">jQuery</a></small></h6>
+    </footer>
+  </body>
 </html>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>

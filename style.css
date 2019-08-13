@@ -11,12 +11,14 @@ html, body, h1, h2, h3, h4, h5, p, ol, ul, li, a, image, iframe, form, label, in
 body {
   font-size: 20px;
 }
+body a:hover {
+  color: #FF6750;
+}
 body header {
   background-color: #fff;
-  padding: 28px 0 8px 0;
   text-align: center;
   position: relative;
-  margin: 0 30px;
+  margin: 30px 30px;
   box-shadow: 0 20px 15px -25px #bbb;
   margin-bottom: 9px;
 }
@@ -30,7 +32,7 @@ body nav {
 }
 body nav #select {
   font-size: 18px;
-  padding: 5px 50px;
+  margin: 15px 50px;
   text-align: center;
   font-family: 'Fredericka the Great', cursive;
 }
@@ -43,29 +45,35 @@ body nav #select #author-select option {
 }
 body main {
   margin-top: 10px;
-  padding: 42px 30px;
+  padding: 0px 30px;
   background: linear-gradient(90deg, white, #EEE, #DDD, #EEE, white);
   background-position: center;
 }
 body main section {
-  padding: 10%;
+  padding: 50px;
+  height: 350px;
   background-color: #333;
   position: relative;
-  z-index: 0;
   border: 6px solid #BB9955;
   border-bottom: 15px solid tan;
 }
-body main section #text {
+body main section #text-container {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+body main section #text-container #test {
   font-size: 18px;
 }
-body main section #author {
+body main section #text-container #author {
   font-size: 16px;
 }
-body main section a {
-  margin-top: 60px;
-}
-body main section a span {
-  font-family: sans;
+body main section #button-container {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
 }
 body main section p {
   font-family: 'Special Elite', cursive;

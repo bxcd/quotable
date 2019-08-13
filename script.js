@@ -1,27 +1,24 @@
 /* 
-This page uses code from the codepen at
-https://codepen.io/freeCodeCamp/pen/qRZeGZ
-attributed to Gabriel Nunes with modification by Todd Chaffee to use Camper gist for JSON Quote data.
+Inspired by the codepen at https://codepen.io/freeCodeCamp/pen/qRZeGZ
+attributed to Gabriel Nunes with modification by Todd Chaffee.
+Quote data source: https://raw.githubusercontent.com/ramespark/Database-Quotes-JSON/master/quotes.json
 */
-let quotesData;
-
-function inIframe() {try {return window.self !== window.top;} catch (e) {return true;}}
-
-var currentQuote = '',currentAuthor = '';
-function openURL(url) {
-  window.open(url, 'Share', 'width=550, height=400, toolbar=0, scrollbars=1 ,location=0 ,statusbar=0,menubar=0, resizable=0');
-}
+let quoteData;
 
 function loadQuoteData() {
   return $.ajax({
     headers: {
-      Accept: "application/json" },
+      Accept: 'application/json' },
 
-    url: 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json',
-    success: function (jsonQuotes) {
-      if (typeof jsonQuotes === 'string') {
-        quotesData = sanitizeQuoteData(JSON.parse(jsonQuotes).quotes);
-      }
+    url: "https://raw.githubusercontent.com/ramespark/Database-Quotes-JSON/master/quotes.json",
+    success: jsonQuotes => {
+      quoteData = sanitizeQuoteData(
+      JSON.parse(jsonQuotes));
+      Object.freeze(quoteData);
+    },
+    error: () => {
+      $('text').text("Servers are temporarily unreachable. No words...");
+      $('author').text("Random Quoteables");
     } });
 
 }
@@ -29,79 +26,87 @@ function loadQuoteData() {
 function sanitizeQuoteData(data) {
   newData = [];
   data.map((value, index, array) => {
-    let author = value.author.replace(/^(\W)[^\w]*/, '');
+    let author = value.quoteAuthor.replace(/^(\W)[^\w]*/, '');
     let nocaseAuthor = new RegExp(author, "i");
-    let quote = [value.quote];
-    data[index].author = author;
-    if (newData.findIndex(a => nocaseAuthor.test(a.author)) == -1) {
-      newData.push({ author: author, quote: [quote] });
+    let text = [value.quoteText];
+    data[index].quoteAuthor = author;
+    if (newData.findIndex(a => nocaseAuthor.test(a.quoteAuthor)) == -1) {
+      newData.push({ quoteAuthor: author, quoteText: [text] });
     } else {
-      let i = newData.findIndex(a => nocaseAuthor.test(a.author));
-      newData[i].quote.push(quote);
+      let i = newData.findIndex(a => nocaseAuthor.test(a.quoteAuthor));
+      newData[i].quoteText.push(text);
     }
   });
-  newData.sort((a, b) => a.author.localeCompare(b.author));
+  newData.sort((a, b) =>
+  a.quoteAuthor.localeCompare(
+  b.quoteAuthor));
+
   return newData;
 }
 
-function loadAuthorMenu() {
+function loadAuthorMenu(data) {
   let options = [
   "<option value='author-default'>the winds of chance</option>",
-  ...quotesData.map((value, index, array) => {
-    let info = value.quote.length > 1 ?
-    " (" + value.quote.length + ")" : '';
+  ...data.map((value, index, array) => {
+    let info = value.quoteText.length > 1 ?
+    " (" + value.quoteText.length + ")" : '';
     let html =
-    "<option class='author-option' value='author-" + index + "'>" +
-    value.author + info + "</option>";
+    "<option class='author-option' value='author-" +
+    index + "'>" + value.quoteAuthor + info +
+    "</option>";
     return html;
   })];
 
   $('#author-select').html(options);
 }
 
-function loadQuoteDisplay(data) {
-  console.log(data.quote);
-  let currentQuote = data.quote[
-  Math.floor(Math.random() * data.quote.length)];
+function getRandomQuote(data) {
+  return data[
+  Math.floor(Math.random() * data.length)];
 
-  console.log(currentQuote);
-  let currentAuthor = data.author;
-
-  if (inIframe())
-  {
-    $('#tweet-quote').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + currentQuote + '" ' + currentAuthor));
-  }
-
-  $('#text').text(currentQuote);
-  $('#author').html(currentAuthor);
 }
 
-function getRandomQuote() {
-  return quotesData[Math.floor(Math.random() * quotesData.length)];
+function loadQuoteDisplay(quote) {
+  let randomText = quote.quoteText[
+  Math.floor(
+  Math.random() * quote.quoteText.length)];
+
+
+  let currentAuthor = quote.quoteAuthor;
+
+  let encodedQuote = encodeURIComponent(
+  '"' + randomText + '" ' + currentAuthor);
+
+  let uriQuery = "hashtags=quotes&related=freecodecamp&text=" +
+  encodedQuote;
+
+  $('#tweet-quote').attr(
+  'href',
+  "https://twitter.com/intent/tweet?" +
+  uriQuery);
+
+
+  $('#text').text(randomText);
+  $('#author').text(currentAuthor);
 }
 
 $(document).ready(function () {
   loadQuoteData().then(() => {
-    loadAuthorMenu();
-    loadQuoteDisplay(getRandomQuote());
+    loadAuthorMenu(quoteData);
+    loadQuoteDisplay(getRandomQuote(quoteData));
   });
 
   $('#author-select').on('change', () => {
-    let val = $('#author-select option:selected').val();
+    let val = $(
+    '#author-select option:selected').
+    val();
     let index = parseInt(val.match(/\d+/g));
-    let data = quotesData[index];
-    console.log(data);
-    loadQuoteDisplay(data);
+    let quote = quoteData[index];
+    loadQuoteDisplay(quote);
   });
 
   $('#new-quote').on('click', () => {
     $('#author-select').val('author-default');
-    loadQuoteDisplay(getRandomQuote());
-  });
-
-  $('#tweet-quote').on('click', function () {
-    if (!inIframe()) {
-      openURL('https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + currentQuote + '" ' + currentAuthor));
-    }
+    loadQuoteDisplay(getRandomQuote(quoteData));
   });
 });
