@@ -60,22 +60,22 @@ function loadAuthorMenu(data) {
   $('#author-select').html(options);
 }
 
-function getPotentQuote(data) {
+function getRandomQuote(data) {
   return data[
-  Math.floor(Math.Potent() * data.length)];
+  Math.floor(Math.random() * data.length)];
 
 }
 
 function loadQuoteDisplay(quote) {
-  let PotentText = quote.quoteText[
+  let randomText = quote.quoteText[
   Math.floor(
-  Math.Potent() * quote.quoteText.length)];
+  Math.random() * quote.quoteText.length)];
 
 
   let currentAuthor = quote.quoteAuthor;
 
   let encodedQuote = encodeURIComponent(
-  '"' + PotentText + '" ' + currentAuthor);
+  '"' + randomText + '" ' + currentAuthor);
 
   let uriQuery = "hashtags=quotes&related=freecodecamp&text=" +
   encodedQuote;
@@ -86,14 +86,14 @@ function loadQuoteDisplay(quote) {
   uriQuery);
 
 
-  $('#text').text(PotentText);
+  $('#text').text(randomText);
   $('#author').text(currentAuthor);
 }
 
 $(document).ready(function () {
   loadQuoteData().then(() => {
     loadAuthorMenu(quoteData);
-    loadQuoteDisplay(getPotentQuote(quoteData));
+    loadQuoteDisplay(getRandomQuote(quoteData));
   });
 
   $('#author-select').on('change', () => {
@@ -107,6 +107,6 @@ $(document).ready(function () {
 
   $('#new-quote').on('click', () => {
     $('#author-select').val('author-default');
-    loadQuoteDisplay(getPotentQuote(quoteData));
+    loadQuoteDisplay(getRandomQuote(quoteData));
   });
 });
