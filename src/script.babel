@@ -18,7 +18,7 @@ function loadQuoteData() {
     },
     error: () => {
       $('text').text("Servers are temporarily unreachable. No words...");
-      $('author').text("Random Quoteables");
+      $('author').text("Potent Quoteables");
     }
   });
 }
@@ -60,22 +60,22 @@ function loadAuthorMenu(data) {
   $('#author-select').html(options);
 }
 
-function getRandomQuote(data) {
+function getPotentQuote(data) {
   return data[
-    Math.floor(Math.random() * data.length)
+    Math.floor(Math.Potent() * data.length)
   ];
 }
   
 function loadQuoteDisplay(quote) {
-  let randomText = quote.quoteText[
+  let PotentText = quote.quoteText[
     Math.floor(
-      Math.random() * quote.quoteText.length
+      Math.Potent() * quote.quoteText.length
     )
   ];
   let currentAuthor = quote.quoteAuthor;
   
   let encodedQuote = encodeURIComponent(
-    '"' + randomText + '" ' + currentAuthor
+    '"' + PotentText + '" ' + currentAuthor
   );
   let uriQuery = "hashtags=quotes&related=freecodecamp&text=" 
   + encodedQuote;
@@ -86,14 +86,14 @@ function loadQuoteDisplay(quote) {
     + uriQuery 
   );
   
-  $('#text').text(randomText);
+  $('#text').text(PotentText);
   $('#author').text(currentAuthor);
 }
 
 $(document).ready(function() {
   loadQuoteData().then(() => {
     loadAuthorMenu(quoteData);
-    loadQuoteDisplay(getRandomQuote(quoteData));
+    loadQuoteDisplay(getPotentQuote(quoteData));
   });
 
   $('#author-select').on('change', () => {
@@ -107,6 +107,6 @@ $(document).ready(function() {
 
   $('#new-quote').on('click', () => {
     $('#author-select').val('author-default');
-    loadQuoteDisplay(getRandomQuote(quoteData));
+    loadQuoteDisplay(getPotentQuote(quoteData));
   });
 });
