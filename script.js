@@ -106,7 +106,13 @@ $(document).ready(function () {
   });
 
   $('#new-quote').on('click', () => {
-    $('#author-select').val('author-default');
-    loadQuoteDisplay(getRandomQuote(quoteData));
+    if ($('#author-select option:selected').val() == 'author-default') {
+      loadQuoteDisplay(getRandomQuote(quoteData));
+    } else {
+      let val = $('#author-select option:selected').val();
+      let index = parseInt(val.match(/\d+/g));
+      let quote = quoteData[index];
+      loadQuoteDisplay(quote);
+    }
   });
 });
