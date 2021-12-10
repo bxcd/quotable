@@ -46,7 +46,7 @@ function sanitizeQuoteData(data) {
 
 function loadAuthorMenu(data) {
   let options = [
-    "<option value='author-default'>the winds of chance</option>",
+    "<option value='author-default'>the wind of chance</option>",
     ...data.map((value, index, array) => {
         let info = (value.quoteText.length > 1) ? 
           " (" + value.quoteText.length + ")" : '';
@@ -77,7 +77,7 @@ function loadQuoteDisplay(quote) {
   let encodedQuote = encodeURIComponent(
     '"' + randomText + '" ' + currentAuthor
   );
-  let uriQuery = "hashtags=quotes&related=freecodecamp&text=" 
+  let uriQuery = "hashtags=quotes&text=" 
   + encodedQuote;
 
   $('#tweet-quote').attr(
