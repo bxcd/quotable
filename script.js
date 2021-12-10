@@ -112,7 +112,8 @@ $(document).ready(function () {
       let val = $('#author-select option:selected').val();
       let index = parseInt(val.match(/\d+/g));
       let quote = quoteData[index];
-      loadQuoteDisplay(quote);
+      if (quote.quoteText.length > 1) { loadQuoteDisplay(quote); }
+      else { loadQuoteDisplay(getRandomQuote(quoteData)); }
     }
   });
 });
