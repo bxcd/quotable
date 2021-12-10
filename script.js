@@ -105,6 +105,11 @@ $(document).ready(function () {
     loadQuoteDisplay(quote);
   });
 
+  $('#reset-quote').on('click', () => {
+    $('#author-select').val('author-default');
+    loadQuoteDisplay(getRandomQuote(quoteData));
+  });
+
   $('#new-quote').on('click', () => {
     if ($('#author-select option:selected').val() == 'author-default') {
       loadQuoteDisplay(getRandomQuote(quoteData));
@@ -112,8 +117,9 @@ $(document).ready(function () {
       let val = $('#author-select option:selected').val();
       let index = parseInt(val.match(/\d+/g));
       let quote = quoteData[index];
-      if (quote.quoteText.length > 1) { loadQuoteDisplay(quote); }
-      else { loadQuoteDisplay(getRandomQuote(quoteData)); }
+      console.log(quote);
+      if (quote.quoteText.length > 1) {loadQuoteDisplay(quote);} else
+      {loadQuoteDisplay(getRandomQuote(quoteData));}
     }
   });
 });
