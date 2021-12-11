@@ -119,9 +119,10 @@ $(document).ready(function () {
       let quote = quoteData[index];
       console.log(quote);
       if (quote.quoteText.length > 1) {
-        $('#author-select').val('author-default');
         loadQuoteDisplay(quote);
-      } else {loadQuoteDisplay(getRandomQuote(quoteData));}
+      } else {
+        $('#author-select').val('author-default');
+        loadQuoteDisplay(getRandomQuote(quoteData));}
     }
   });
 });
