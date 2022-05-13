@@ -1,6 +1,8 @@
 # quotable
 
-Quote generator made with Boostrap, jQuery and Sass. Loads quotes from an (open-source Json file)[https://raw.githubusercontent.com/ramespark/Database-Quotes-JSON/master/quotes.json]. 
+A quote generator with author selection and tweet sharing. 
+
+Made with Boostrap, jQuery and Sass. Loads quotes from an (open-source Json file)[https://raw.githubusercontent.com/ramespark/Database-Quotes-JSON/master/quotes.json]. 
 
 Webpage: https://bxcd.github.io/quotable
 
